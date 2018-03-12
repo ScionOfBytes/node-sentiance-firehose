@@ -59,6 +59,11 @@ class FirehoseClient extends EventEmitter {
         if(globalConfig.debug) {
             d('config: '+JSON.stringify(this.config));
         }
+
+        if (options.preprod) {
+            this.config.firehoseSocketUrl = 'https://preprod-firehose.sentiance.com/'
+            this.config.apiUrl = 'https://preprod-api.sentiance.com/v2/gql'
+        }
     }
 
     connect() {
